@@ -11,6 +11,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.28.0",
   "devDependencies": {
+    "oxfmt": "catalog:",
     "turbo": "^2.7.5"
   }
 }

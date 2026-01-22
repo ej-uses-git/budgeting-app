@@ -9,6 +9,10 @@
     },
     "lint": {},
     "lint:ci": {},
+    "format": {
+      "cache": false
+    },
+    "check-format": {},
     "dev": {
       "persistent": true,
       "cache": false

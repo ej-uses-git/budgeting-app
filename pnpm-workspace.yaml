@@ -3,4 +3,5 @@ packages:
   - packages/*
 
 catalog:
+  oxfmt: 0.26.0
   oxlint: 1.41.0

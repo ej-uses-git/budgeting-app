@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "lint": "oxlint",
-    "lint:ci": "oxlint -f github"
+    "lint:ci": "oxlint -f github",
+    "format": "oxfmt",
+    "check-format": "oxfmt --check"
   },
   "devDependencies": {
     "@repo/oxlint-config": "workspace:*",
