@@ -1,0 +1,6 @@
+packages:
+  - apps/*
+  - packages/*
+
+catalog:
+  oxlint: 1.41.0

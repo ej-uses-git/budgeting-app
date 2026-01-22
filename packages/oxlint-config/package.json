@@ -1,0 +1,9 @@
+{
+  "name": "@repo/oxlint-config",
+  "private": true,
+  "type": "module",
+  "scripts": {},
+  "devDependencies": {
+    "oxlint": "catalog:"
+  }
+}

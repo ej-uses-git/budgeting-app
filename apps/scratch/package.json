@@ -1,0 +1,13 @@
+{
+  "name": "@repo/scratch",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "lint": "oxlint",
+    "lint:ci": "oxlint -f github"
+  },
+  "devDependencies": {
+    "@repo/oxlint-config": "workspace:*",
+    "oxlint": "catalog:"
+  }
+}

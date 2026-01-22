@@ -1,0 +1,27 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+concurrency:
+  cancel-in-progress: true
+  group: ""
+
+jobs:
+  ci:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install Dependencies
+        run: |
+          pnpm install
+      - name: CI Pipeline
+        run: |
+          pnpm exec turbo run lint:ci
