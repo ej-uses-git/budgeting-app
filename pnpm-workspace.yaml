@@ -3,7 +3,11 @@ packages:
   - packages/*
 
 catalog:
+  '@effect/language-service': 0.72.0
+  '@effect/platform': 0.94.1
+  '@effect/platform-node': 0.104.0
   '@types/node': ^24.10.9
+  effect: 3.19.14
   oxfmt: 0.26.0
   oxlint: 1.41.0
   typescript: 5.9.3

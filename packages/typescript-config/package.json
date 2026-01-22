@@ -9,6 +9,7 @@
   },
   "scripts": {},
   "dependencies": {
+    "@effect/language-service": "catalog:",
     "@types/node": "catalog:"
   }
 }

@@ -7,6 +7,9 @@
     "style": "warn",
     "suspicious": "warn"
   },
+  "rules": {
+    "func-names": "off"
+  },
   "settings": {
     "jsdoc": {
       "ignorePrivate": false,

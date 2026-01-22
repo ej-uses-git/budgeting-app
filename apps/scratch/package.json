@@ -9,6 +9,11 @@
     "check-format": "oxfmt --check",
     "check-types": "tsc"
   },
+  "dependencies": {
+    "@effect/platform": "catalog:",
+    "@effect/platform-node": "catalog:",
+    "effect": "catalog:"
+  },
   "devDependencies": {
     "@repo/oxlint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",

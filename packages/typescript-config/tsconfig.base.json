@@ -2,7 +2,9 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
+    "moduleResolution": "bundler",
     "types": [],
+    "plugins": [{ "name": "@effect/language-service" }],
     "noEmit": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
