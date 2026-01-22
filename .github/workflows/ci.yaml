@@ -11,7 +11,7 @@ on:
 
 concurrency:
   cancel-in-progress: true
-  group: ""
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
 
 jobs:
   ci:
