@@ -6,12 +6,18 @@ settings:
 
 catalogs:
   default:
+    '@types/node':
+      specifier: ^24.10.9
+      version: 24.10.9
     oxfmt:
       specifier: 0.26.0
       version: 0.26.0
     oxlint:
       specifier: 1.41.0
       version: 1.41.0
+    typescript:
+      specifier: 5.9.3
+      version: 5.9.3
 
 importers:
 
@@ -29,15 +35,27 @@ importers:
       '@repo/oxlint-config':
         specifier: workspace:*
         version: link:../../packages/oxlint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
       oxlint:
         specifier: 'catalog:'
         version: 1.41.0
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
 
   packages/oxlint-config:
     devDependencies:
       oxlint:
         specifier: 'catalog:'
         version: 1.41.0
+
+  packages/typescript-config:
+    dependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.10.9
 
 packages:
 
@@ -121,6 +139,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@types/node@24.10.9':
+    resolution: {integrity: sha512-ne4A0IpG3+2ETuREInjPNhUGis1SFjv1d5asp8MzEAGtOZeTeHVDOYqOgqfhvseqg/iXty2hjBf1zAOb7RNiNw==}
+
   oxfmt@0.26.0:
     resolution: {integrity: sha512-UDD1wFNwfeorMm2ZY0xy1KRAAvJ5NjKBfbDmiMwGP7baEHTq65cYpC0aPP+BGHc8weXUbSZaK8MdGyvuRUvS4Q==}
     engines: {node: ^20.19.0 || >=22.12.0}
@@ -174,6 +195,14 @@ packages:
     resolution: {integrity: sha512-7Imdmg37joOloTnj+DPrab9hIaQcDdJ5RwSzcauo/wMOSAgO+A/I/8b3hsGGs6PWQz70m/jkPgdqWsfNKtwwDQ==}
     hasBin: true
 
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  undici-types@7.16.0:
+    resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
+
 snapshots:
 
   '@oxfmt/darwin-arm64@0.26.0':
@@ -223,6 +252,10 @@ snapshots:
 
   '@oxlint/win32-x64@1.41.0':
     optional: true
+
+  '@types/node@24.10.9':
+    dependencies:
+      undici-types: 7.16.0
 
   oxfmt@0.26.0:
     dependencies:
@@ -276,3 +309,7 @@ snapshots:
       turbo-linux-arm64: 2.7.5
       turbo-windows-64: 2.7.5
       turbo-windows-arm64: 2.7.5
+
+  typescript@5.9.3: {}
+
+  undici-types@7.16.0: {}

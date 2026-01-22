@@ -1,0 +1,14 @@
+{
+  "name": "@repo/typescript-config",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./base": "./tsconfig.base.json",
+    "./server": "./tsconfig.server.json",
+    "./client": "./tsconfig.client.json"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@types/node": "catalog:"
+  }
+}

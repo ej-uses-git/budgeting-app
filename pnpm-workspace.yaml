@@ -3,5 +3,7 @@ packages:
   - packages/*
 
 catalog:
+  '@types/node': ^24.10.9
   oxfmt: 0.26.0
   oxlint: 1.41.0
+  typescript: 5.9.3

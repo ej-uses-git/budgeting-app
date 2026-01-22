@@ -28,4 +28,4 @@ jobs:
           pnpm install
       - name: CI Pipeline
         run: |
-          pnpm exec turbo run lint:ci
+          pnpm exec turbo run lint:ci check-types

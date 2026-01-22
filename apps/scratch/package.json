@@ -1,15 +1,18 @@
 {
   "name": "@repo/scratch",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
     "lint": "oxlint",
     "lint:ci": "oxlint -f github",
     "format": "oxfmt",
-    "check-format": "oxfmt --check"
+    "check-format": "oxfmt --check",
+    "check-types": "tsc"
   },
   "devDependencies": {
     "@repo/oxlint-config": "workspace:*",
-    "oxlint": "catalog:"
+    "@repo/typescript-config": "workspace:*",
+    "oxlint": "catalog:",
+    "typescript": "catalog:"
   }
 }
