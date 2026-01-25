@@ -1,9 +1,0 @@
-
-> @repo/scratch@ lint /Users/ejshafran/personal/budgeting-app/apps/scratch
-> oxlint -f unix
-
-src/index.ts:1:7: Variable 're' is declared but never used. Unused variables should start with a '_'. [Error/eslint(no-unused-vars)]
-src/index.ts:3:1: Require setup and teardown code to be within a hook. [Warning/eslint-plugin-jest(require-hook)]
-
-2 problems
- ELIFECYCLE  Command failed with exit code 1.
