@@ -5,7 +5,7 @@ import * as ParseResult from "effect/ParseResult";
 import * as Schema from "effect/Schema";
 // NOTE: RRule incorrectly defines an `index.d.ts`! We need to import it as a default-import
 // oxlint-disable-next-line
-import RRule from "rrule";
+import { Weekday, Frequency, RRule } from "rrule";
 
 const MONTH_MAX = 12;
 const HOUR_MAX = 23;
@@ -23,10 +23,10 @@ const WeekdayFromDayAndNth = Schema.transform(
     WeekdayDay,
     Schema.OptionFromNullOr(Schema.Int.pipe(Schema.nonNegative())),
   ),
-  Schema.instanceOf(RRule.Weekday),
+  Schema.instanceOf(Weekday),
   {
     decode: (_toI, [weekdayDay, weekdayN]) =>
-      new RRule.Weekday(weekdayDay, weekdayN ?? undefined),
+      new Weekday(weekdayDay, weekdayN ?? undefined),
     encode: (from) => [from.weekday, Option.fromNullable(from.n)] as const,
     strict: true,
   },
@@ -34,9 +34,9 @@ const WeekdayFromDayAndNth = Schema.transform(
 
 const WeekdayFromDay = Schema.transform(
   WeekdayDay,
-  Schema.instanceOf(RRule.Weekday),
+  Schema.instanceOf(Weekday),
   {
-    decode: (day) => new RRule.Weekday(day),
+    decode: (day) => new Weekday(day),
     encode: (from) => from.weekday,
     strict: true,
   },
@@ -108,7 +108,7 @@ export const RecurrenceInput = Schema.Struct({
   byYearDay: Schema.Array(Schema.Int.pipe(absoluteBetween(1, YEAR_DAY_MAX))),
   count: Schema.OptionFromNullOr(Schema.Int.pipe(Schema.positive())),
   endDate: Schema.OptionFromNullOr(Schema.DateTimeUtc),
-  frequency: Schema.Enums(RRule.Frequency),
+  frequency: Schema.Enums(Frequency),
   interval: Schema.Int.pipe(Schema.positive()),
   startDate: Schema.DateTimeUtc,
   timeZone: OptionalTimeZone,
@@ -123,10 +123,10 @@ const fromBy = <TValue>(by: readonly TValue[]) => {
 };
 
 class RecurrenceOutput {
-  readonly #rule: RRule.RRule;
+  readonly #rule: RRule;
 
   constructor(public readonly input: RecurrenceInput) {
-    this.#rule = new RRule.RRule({
+    this.#rule = new RRule({
       byhour: fromBy(input.byHour),
       byminute: fromBy(input.byMinute),
       bymonth: fromBy(input.byMonth),

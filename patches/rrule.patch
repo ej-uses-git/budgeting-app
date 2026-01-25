@@ -1,0 +1,691 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+deleted file mode 100644
+index bfaae2edc85d2ac819c975cc8f72a98678a6ab21..0000000000000000000000000000000000000000
+diff --git a/dist/esm/cache.d.ts b/dist/esm/cache.d.ts
+index 669876d41ecb22d7313606474b9a2430bf23df74..86edd92572b659db7f62893c7465b34a1bdec5b8 100644
+--- a/dist/esm/cache.d.ts
++++ b/dist/esm/cache.d.ts
+@@ -1,4 +1,4 @@
+-import { IterArgs } from './iterresult';
++import { IterArgs } from './iterresult.js';
+ export declare type CacheKeys = 'before' | 'after' | 'between';
+ export declare class Cache {
+     all: Date[] | Partial<IterArgs> | false;
+diff --git a/dist/esm/cache.js b/dist/esm/cache.js
+index f17a05aa3c6ce8fdf299c9d9d3e0b582d8afadaf..5d3701f4a490e71746d8041c7fdd4c220c732da1 100644
+--- a/dist/esm/cache.js
++++ b/dist/esm/cache.js
+@@ -1,6 +1,6 @@
+-import IterResult from './iterresult';
+-import { clone, cloneDates } from './dateutil';
+-import { isArray } from './helpers';
++import IterResult from './iterresult.js';
++import { clone, cloneDates } from './dateutil.js';
++import { isArray } from './helpers.js';
+ function argsMatch(left, right) {
+     if (Array.isArray(left)) {
+         if (!Array.isArray(right))
+diff --git a/dist/esm/callbackiterresult.d.ts b/dist/esm/callbackiterresult.d.ts
+index 6b5df8653f661aac93f94298a2e0379805ba4049..262051a0c1125bc180e03361f61a44dd4e84c7ed 100644
+--- a/dist/esm/callbackiterresult.d.ts
++++ b/dist/esm/callbackiterresult.d.ts
+@@ -1,4 +1,4 @@
+-import IterResult, { IterArgs } from './iterresult';
++import IterResult, { IterArgs } from './iterresult.js';
+ declare type Iterator = (d: Date, len: number) => boolean;
+ /**
+  * IterResult subclass that calls a callback function on each add,
+diff --git a/dist/esm/callbackiterresult.js b/dist/esm/callbackiterresult.js
+index d95f279bb45e3f56f69e1a79577319e50dfd06c5..2cfb9301fa1dc9bd2c3f1a557ccd124dc7c0eebb 100644
+--- a/dist/esm/callbackiterresult.js
++++ b/dist/esm/callbackiterresult.js
+@@ -1,5 +1,5 @@
+ import { __extends } from "tslib";
+-import IterResult from './iterresult';
++import IterResult from './iterresult.js';
+ /**
+  * IterResult subclass that calls a callback function on each add,
+  * and stops iterating when the callback returns false.
+diff --git a/dist/esm/datetime.d.ts b/dist/esm/datetime.d.ts
+index 4ef444050fe3f13fdb912047beaa8c319b0821e4..60a1d35354a83304365d6e494e74646b95c5fc5c 100644
+--- a/dist/esm/datetime.d.ts
++++ b/dist/esm/datetime.d.ts
+@@ -1,4 +1,4 @@
+-import { ParsedOptions } from './types';
++import { ParsedOptions } from './types.js';
+ export declare class Time {
+     hour: number;
+     minute: number;
+diff --git a/dist/esm/datetime.js b/dist/esm/datetime.js
+index c1187188a71d21c6038872176d8f4c801c7d9d64..877e46e485b875e7c3a329861e3cb5ffd3a92a30 100644
+--- a/dist/esm/datetime.js
++++ b/dist/esm/datetime.js
+@@ -1,7 +1,7 @@
+ import { __extends } from "tslib";
+-import { Frequency } from './types';
+-import { pymod, divmod, empty, includes } from './helpers';
+-import { getWeekday, MAXYEAR, monthRange } from './dateutil';
++import { Frequency } from './types.js';
++import { pymod, divmod, empty, includes } from './helpers.js';
++import { getWeekday, MAXYEAR, monthRange } from './dateutil.js';
+ var Time = /** @class */ (function () {
+     function Time(hour, minute, second, millisecond) {
+         this.hour = hour;
+diff --git a/dist/esm/dateutil.d.ts b/dist/esm/dateutil.d.ts
+index 57e7be14dd18bb89846db4e76bfd049e6a09d672..fe4aed9d69ccc311378c9ce91ca334242d8f1036 100644
+--- a/dist/esm/dateutil.d.ts
++++ b/dist/esm/dateutil.d.ts
+@@ -1,4 +1,4 @@
+-import { Time } from './datetime';
++import { Time } from './datetime.js';
+ declare type Datelike = Pick<Date, 'getTime'>;
+ export declare const datetime: (y: number, m: number, d: number, h?: number, i?: number, s?: number) => Date;
+ /**
+diff --git a/dist/esm/dateutil.js b/dist/esm/dateutil.js
+index abfd43a242a68ce874bb61864b82302e419b566f..69e1a161b47abaf979f948d44ed59d5f1eefdc28 100644
+--- a/dist/esm/dateutil.js
++++ b/dist/esm/dateutil.js
+@@ -1,4 +1,4 @@
+-import { padStart } from './helpers';
++import { padStart } from './helpers.js';
+ export var datetime = function (y, m, d, h, i, s) {
+     if (h === void 0) { h = 0; }
+     if (i === void 0) { i = 0; }
+diff --git a/dist/esm/datewithzone.js b/dist/esm/datewithzone.js
+index 4cf4b5c3d90e5a4f69a30a2509c7f1dd8515b6bc..3deb1371348346689ee110106f329efcaa374ca3 100644
+--- a/dist/esm/datewithzone.js
++++ b/dist/esm/datewithzone.js
+@@ -1,4 +1,4 @@
+-import { dateInTimeZone, timeToUntilString } from './dateutil';
++import { dateInTimeZone, timeToUntilString } from './dateutil.js';
+ var DateWithZone = /** @class */ (function () {
+     function DateWithZone(date, tzid) {
+         if (isNaN(date.getTime())) {
+diff --git a/dist/esm/helpers.d.ts b/dist/esm/helpers.d.ts
+index 77449e3d4ebe43938fa16dc0aa6c783a9c48b881..0b47d69446810df13f910ea32546f949fa5ea088 100644
+--- a/dist/esm/helpers.d.ts
++++ b/dist/esm/helpers.d.ts
+@@ -1,4 +1,4 @@
+-import { WeekdayStr } from './weekday';
++import { WeekdayStr } from './weekday.js';
+ export declare const isPresent: <T>(value?: T) => value is T;
+ export declare const isNumber: (value: unknown) => value is number;
+ export declare const isWeekdayStr: (value: unknown) => value is WeekdayStr;
+diff --git a/dist/esm/helpers.js b/dist/esm/helpers.js
+index 99cf75845e2f853dc01963e7a98c6fe9722d790f..c657dcae3a57bfff8a12d5ccb83215cd763e09b0 100644
+--- a/dist/esm/helpers.js
++++ b/dist/esm/helpers.js
+@@ -1,7 +1,7 @@
+ // =============================================================================
+ // Helper functions
+ // =============================================================================
+-import { ALL_WEEKDAYS } from './weekday';
++import { ALL_WEEKDAYS } from './weekday.js';
+ export var isPresent = function (value) {
+     return value !== null && value !== undefined;
+ };
+diff --git a/dist/esm/index.d.ts b/dist/esm/index.d.ts
+index 0e0e81b6823b8d1626c036f39df4960a788fbe2f..6c342d8e1c84f7de25599f2e83d732b7dcdc42b2 100644
+--- a/dist/esm/index.d.ts
++++ b/dist/esm/index.d.ts
+@@ -1,8 +1,8 @@
+-export { RRule } from './rrule';
+-export { RRuleSet } from './rruleset';
+-export { rrulestr } from './rrulestr';
+-export { Frequency, ByWeekday, Options } from './types';
+-export { Weekday, WeekdayStr, ALL_WEEKDAYS } from './weekday';
+-export { RRuleStrOptions } from './rrulestr';
+-export { datetime } from './dateutil';
++export { RRule } from './rrule.js';
++export { RRuleSet } from './rruleset.js';
++export { rrulestr } from './rrulestr.js';
++export { Frequency, ByWeekday, Options } from './types.js';
++export { Weekday, WeekdayStr, ALL_WEEKDAYS } from './weekday.js';
++export { RRuleStrOptions } from './rrulestr.js';
++export { datetime } from './dateutil.js';
+ //# sourceMappingURL=index.d.ts.map
+diff --git a/dist/esm/index.js b/dist/esm/index.js
+index 7297aa8d02ad53579724d9c4279ed91afd37ec42..2c22a5629c01a0d096f739008f145a78973b7759 100644
+--- a/dist/esm/index.js
++++ b/dist/esm/index.js
+@@ -13,10 +13,10 @@
+  * https://github.com/jakubroztocil/rrule/blob/master/LICENCE
+  *
+  */
+-export { RRule } from './rrule';
+-export { RRuleSet } from './rruleset';
+-export { rrulestr } from './rrulestr';
+-export { Frequency } from './types';
+-export { Weekday, ALL_WEEKDAYS } from './weekday';
+-export { datetime } from './dateutil';
++export { RRule } from './rrule.js';
++export { RRuleSet } from './rruleset.js';
++export { rrulestr } from './rrulestr.js';
++export { Frequency } from './types.js';
++export { Weekday, ALL_WEEKDAYS } from './weekday.js';
++export { datetime } from './dateutil.js';
+ //# sourceMappingURL=index.js.map
+diff --git a/dist/esm/iter/index.d.ts b/dist/esm/iter/index.d.ts
+index 365ff126fc5114d0941351a3523c1997a7ed985a..59a0b549f9eeda8f05c6512701744f24ccca34e8 100644
+--- a/dist/esm/iter/index.d.ts
++++ b/dist/esm/iter/index.d.ts
+@@ -1,4 +1,4 @@
+-import IterResult from '../iterresult';
+-import { ParsedOptions, QueryMethodTypes } from '../types';
++import IterResult from '../iterresult.js';
++import { ParsedOptions, QueryMethodTypes } from '../types.js';
+ export declare function iter<M extends QueryMethodTypes>(iterResult: IterResult<M>, options: ParsedOptions): import("../types").IterResultType<M>;
+ //# sourceMappingURL=index.d.ts.map
+diff --git a/dist/esm/iter/index.js b/dist/esm/iter/index.js
+index 2dbadcf4a4810ad5882162ad49815b1dffae61fa..7cfa82645856224c78d3f43cd380b75cc09bf091 100644
+--- a/dist/esm/iter/index.js
++++ b/dist/esm/iter/index.js
+@@ -1,12 +1,12 @@
+-import { freqIsDailyOrGreater } from '../types';
+-import { combine, fromOrdinal, MAXYEAR } from '../dateutil';
+-import Iterinfo from '../iterinfo/index';
+-import { RRule } from '../rrule';
+-import { buildTimeset } from '../parseoptions';
+-import { notEmpty, includes, isPresent } from '../helpers';
+-import { DateWithZone } from '../datewithzone';
+-import { buildPoslist } from './poslist';
+-import { DateTime } from '../datetime';
++import { freqIsDailyOrGreater } from '../types.js';
++import { combine, fromOrdinal, MAXYEAR } from '../dateutil.js';
++import Iterinfo from '../iterinfo/index.js';
++import { RRule } from '../rrule.js';
++import { buildTimeset } from '../parseoptions.js';
++import { notEmpty, includes, isPresent } from '../helpers.js';
++import { DateWithZone } from '../datewithzone.js';
++import { buildPoslist } from './poslist.js';
++import { DateTime } from '../datetime.js';
+ export function iter(iterResult, options) {
+     var dtstart = options.dtstart, freq = options.freq, interval = options.interval, until = options.until, bysetpos = options.bysetpos;
+     var count = options.count;
+diff --git a/dist/esm/iter/poslist.d.ts b/dist/esm/iter/poslist.d.ts
+index d86bf9c14e6b7137d0719e5814854c99f8bb1c6c..8580f4ca13b0e993bf95d8767121788785d332c3 100644
+--- a/dist/esm/iter/poslist.d.ts
++++ b/dist/esm/iter/poslist.d.ts
+@@ -1,4 +1,4 @@
+-import Iterinfo from '../iterinfo/index';
+-import { Time } from '../datetime';
++import Iterinfo from '../iterinfo/index.js';
++import { Time } from '../datetime.js';
+ export declare function buildPoslist(bysetpos: number[], timeset: Time[], start: number, end: number, ii: Iterinfo, dayset: (number | null)[]): Date[];
+ //# sourceMappingURL=poslist.d.ts.map
+diff --git a/dist/esm/iter/poslist.js b/dist/esm/iter/poslist.js
+index 15501eb983817fecfd0af8dbd8bae745d3f24d77..ec90bf3e357973b4647a3e814818485a04a15fa8 100644
+--- a/dist/esm/iter/poslist.js
++++ b/dist/esm/iter/poslist.js
+@@ -1,5 +1,5 @@
+-import { combine, fromOrdinal, sort } from '../dateutil';
+-import { pymod, isPresent, includes } from '../helpers';
++import { combine, fromOrdinal, sort } from '../dateutil.js';
++import { pymod, isPresent, includes } from '../helpers.js';
+ export function buildPoslist(bysetpos, timeset, start, end, ii, dayset) {
+     var poslist = [];
+     for (var j = 0; j < bysetpos.length; j++) {
+diff --git a/dist/esm/iterinfo/index.d.ts b/dist/esm/iterinfo/index.d.ts
+index 6567e1a35a6d3acc0b4f5dc8bcab75f5596dc439..2f048879e0c85cf3ab8d55c6681354aa7979a15a 100644
+--- a/dist/esm/iterinfo/index.d.ts
++++ b/dist/esm/iterinfo/index.d.ts
+@@ -1,7 +1,7 @@
+-import { ParsedOptions, Frequency } from '../types';
+-import { YearInfo } from './yearinfo';
+-import { MonthInfo } from './monthinfo';
+-import { Time } from '../datetime';
++import { ParsedOptions, Frequency } from '../types.js';
++import { YearInfo } from './yearinfo.js';
++import { MonthInfo } from './monthinfo.js';
++import { Time } from '../datetime.js';
+ export declare type DaySet = [(number | null)[], number, number];
+ export declare type GetDayset = () => DaySet;
+ export default class Iterinfo {
+diff --git a/dist/esm/iterinfo/index.js b/dist/esm/iterinfo/index.js
+index 4d5dd57ef4dee0e8d0ca1cd7782cae7ccb1d9134..82d90e2a951fb3cff86ebb4955bf064afcef1630 100644
+--- a/dist/esm/iterinfo/index.js
++++ b/dist/esm/iterinfo/index.js
+@@ -1,10 +1,10 @@
+-import { notEmpty, repeat, range, isPresent } from '../helpers';
+-import { Frequency } from '../types';
+-import { rebuildYear } from './yearinfo';
+-import { rebuildMonth } from './monthinfo';
+-import { easter } from './easter';
+-import { Time } from '../datetime';
+-import { datetime, sort, toOrdinal } from '../dateutil';
++import { notEmpty, repeat, range, isPresent } from '../helpers.js';
++import { Frequency } from '../types.js';
++import { rebuildYear } from './yearinfo.js';
++import { rebuildMonth } from './monthinfo.js';
++import { easter } from './easter.js';
++import { Time } from '../datetime.js';
++import { datetime, sort, toOrdinal } from '../dateutil.js';
+ // =============================================================================
+ // Iterinfo
+ // =============================================================================
+diff --git a/dist/esm/iterinfo/monthinfo.d.ts b/dist/esm/iterinfo/monthinfo.d.ts
+index 7d6c0240dd1e3b5cdf5d00a50aff2c1caa4ce801..878dbbe8615fc3c78727cdfa5b4cb9541c5c7177 100644
+--- a/dist/esm/iterinfo/monthinfo.d.ts
++++ b/dist/esm/iterinfo/monthinfo.d.ts
+@@ -1,4 +1,4 @@
+-import { ParsedOptions } from '../types';
++import { ParsedOptions } from '../types.js';
+ export interface MonthInfo {
+     lastyear: number;
+     lastmonth: number;
+diff --git a/dist/esm/iterinfo/monthinfo.js b/dist/esm/iterinfo/monthinfo.js
+index f96376c53f4aaf817fbe2d027495ba603a88824a..906f56c75399dc5114cd7bff10cf51dd63579c3e 100644
+--- a/dist/esm/iterinfo/monthinfo.js
++++ b/dist/esm/iterinfo/monthinfo.js
+@@ -1,5 +1,5 @@
+-import { RRule } from '../rrule';
+-import { empty, repeat, pymod } from '../helpers';
++import { RRule } from '../rrule.js';
++import { empty, repeat, pymod } from '../helpers.js';
+ export function rebuildMonth(year, month, yearlen, mrange, wdaymask, options) {
+     var result = {
+         lastyear: year,
+diff --git a/dist/esm/iterinfo/yearinfo.d.ts b/dist/esm/iterinfo/yearinfo.d.ts
+index 917f6a9452e3a55a94281a42e9f4173b90bdbe20..1463134ac5bb2a7025fb7a4616e1dd97fe5c5d26 100644
+--- a/dist/esm/iterinfo/yearinfo.d.ts
++++ b/dist/esm/iterinfo/yearinfo.d.ts
+@@ -1,4 +1,4 @@
+-import { ParsedOptions } from '../types';
++import { ParsedOptions } from '../types.js';
+ export interface YearInfo {
+     yearlen: 365 | 366;
+     nextyearlen: 365 | 366;
+diff --git a/dist/esm/iterinfo/yearinfo.js b/dist/esm/iterinfo/yearinfo.js
+index a7cbb63336a16e452a98f02d263471de72d1aa98..cd65321eda25d56e80fd9be356acefdf53f383a5 100644
+--- a/dist/esm/iterinfo/yearinfo.js
++++ b/dist/esm/iterinfo/yearinfo.js
+@@ -1,7 +1,7 @@
+ import { __assign } from "tslib";
+-import { datetime, getWeekday, isLeapYear, toOrdinal } from '../dateutil';
+-import { empty, repeat, pymod, includes } from '../helpers';
+-import { M365MASK, MDAY365MASK, NMDAY365MASK, WDAYMASK, M365RANGE, M366MASK, MDAY366MASK, NMDAY366MASK, M366RANGE, } from '../masks';
++import { datetime, getWeekday, isLeapYear, toOrdinal } from '../dateutil.js';
++import { empty, repeat, pymod, includes } from '../helpers.js';
++import { M365MASK, MDAY365MASK, NMDAY365MASK, WDAYMASK, M365RANGE, M366MASK, MDAY366MASK, NMDAY366MASK, M366RANGE, } from '../masks.js';
+ export function rebuildYear(year, options) {
+     var firstyday = datetime(year, 1, 1);
+     var yearlen = isLeapYear(year) ? 366 : 365;
+diff --git a/dist/esm/iterresult.d.ts b/dist/esm/iterresult.d.ts
+index 93774730af9f66ca48210cc93d38e271affa8fa6..e66220551de79fca9d1a1cf66989056603461aa1 100644
+--- a/dist/esm/iterresult.d.ts
++++ b/dist/esm/iterresult.d.ts
+@@ -1,4 +1,4 @@
+-import { QueryMethodTypes, IterResultType } from './types';
++import { QueryMethodTypes, IterResultType } from './types.js';
+ export interface IterArgs {
+     inc: boolean;
+     before: Date;
+diff --git a/dist/esm/iterset.d.ts b/dist/esm/iterset.d.ts
+index aa212feea074ee78cedab4e07b17df510ffcffe3..cf3ca9615e194d14314c6ad973e8de1086af0d77 100644
+--- a/dist/esm/iterset.d.ts
++++ b/dist/esm/iterset.d.ts
+@@ -1,5 +1,5 @@
+-import IterResult from './iterresult';
+-import { RRule } from './rrule';
+-import { QueryMethodTypes, IterResultType } from './types';
++import IterResult from './iterresult.js';
++import { RRule } from './rrule.js';
++import { QueryMethodTypes, IterResultType } from './types.js';
+ export declare function iterSet<M extends QueryMethodTypes>(iterResult: IterResult<M>, _rrule: RRule[], _exrule: RRule[], _rdate: Date[], _exdate: Date[], tzid: string | undefined): IterResultType<M>;
+ //# sourceMappingURL=iterset.d.ts.map
+diff --git a/dist/esm/iterset.js b/dist/esm/iterset.js
+index 356b845688f04d3e8cde96de5897542bc2dd2032..de198d206acc263a5bb7ff6a31294e0797d0a9d8 100644
+--- a/dist/esm/iterset.js
++++ b/dist/esm/iterset.js
+@@ -1,6 +1,6 @@
+-import { DateWithZone } from './datewithzone';
+-import { iter } from './iter';
+-import { sort } from './dateutil';
++import { DateWithZone } from './datewithzone.js';
++import { iter } from './iter/index.js';
++import { sort } from './dateutil.js';
+ export function iterSet(iterResult, _rrule, _exrule, _rdate, _exdate, tzid) {
+     var _exdateHash = {};
+     var _accept = iterResult.accept;
+diff --git a/dist/esm/masks.js b/dist/esm/masks.js
+index c55e853644c3b878013f7f7c523040ff5ccdac9a..5bc5f33140b50507ec5d50a22fda78640884d2c8 100644
+--- a/dist/esm/masks.js
++++ b/dist/esm/masks.js
+@@ -1,5 +1,5 @@
+ import { __spreadArray } from "tslib";
+-import { range, repeat } from './helpers';
++import { range, repeat } from './helpers.js';
+ // =============================================================================
+ // Date masks
+ // =============================================================================
+diff --git a/dist/esm/nlp/index.d.ts b/dist/esm/nlp/index.d.ts
+index d9bd01fddbcdd128a9b54377aeb9060dd874dba6..91e2194142642b91e17c5ae353b10c2264808eba 100644
+--- a/dist/esm/nlp/index.d.ts
++++ b/dist/esm/nlp/index.d.ts
+@@ -1,7 +1,7 @@
+-import ToText, { DateFormatter, GetText } from './totext';
+-import parseText from './parsetext';
+-import { RRule } from '../rrule';
+-import { Language } from './i18n';
++import ToText, { DateFormatter, GetText } from './totext.js';
++import parseText from './parsetext.js';
++import { RRule } from '../rrule.js';
++import { Language } from './i18n.js';
+ /**
+  *
+  * Implementation of RRule.fromText() and RRule::toText().
+diff --git a/dist/esm/nlp/index.js b/dist/esm/nlp/index.js
+index 653286455c555711f226ce64404a91af86ff8dba..89b19b792ecba1299e23a3ad02e6d90149fca935 100644
+--- a/dist/esm/nlp/index.js
++++ b/dist/esm/nlp/index.js
+@@ -1,8 +1,8 @@
+-import ToText from './totext';
+-import parseText from './parsetext';
+-import { RRule } from '../rrule';
+-import { Frequency } from '../types';
+-import ENGLISH from './i18n';
++import ToText from './totext.js';
++import parseText from './parsetext.js';
++import { RRule } from '../rrule.js';
++import { Frequency } from '../types.js';
++import ENGLISH from './i18n.js';
+ /* !
+  * rrule.js - Library for working with recurrence rules for calendar dates.
+  * https://github.com/jakubroztocil/rrule
+diff --git a/dist/esm/nlp/parsetext.d.ts b/dist/esm/nlp/parsetext.d.ts
+index 72760797d4a7d7f14f232f45504006cf8b64edd9..4a784b77c864e2bbd13e3fd7636510c098718a53 100644
+--- a/dist/esm/nlp/parsetext.d.ts
++++ b/dist/esm/nlp/parsetext.d.ts
+@@ -1,4 +1,4 @@
+-import { Language } from './i18n';
+-import { Options } from '../types';
++import { Language } from './i18n.js';
++import { Options } from '../types.js';
+ export default function parseText(text: string, language?: Language): Partial<Options>;
+ //# sourceMappingURL=parsetext.d.ts.map
+diff --git a/dist/esm/nlp/parsetext.js b/dist/esm/nlp/parsetext.js
+index bd9e1a19903d36712defb372ccd74e46b4f5dbdb..1cb6a3a66bbc47bb5b2fbe219f1ab8d374a3ddcd 100644
+--- a/dist/esm/nlp/parsetext.js
++++ b/dist/esm/nlp/parsetext.js
+@@ -1,5 +1,5 @@
+-import ENGLISH from './i18n';
+-import { RRule } from '../rrule';
++import ENGLISH from './i18n.js';
++import { RRule } from '../rrule.js';
+ // =============================================================================
+ // Parser
+ // =============================================================================
+diff --git a/dist/esm/nlp/totext.d.ts b/dist/esm/nlp/totext.d.ts
+index 086692ce08401452d9cfa96e705b63b946e9df61..3d14aa0c2a97432c4198ae9a917eeb4eb8c8e441 100644
+--- a/dist/esm/nlp/totext.d.ts
++++ b/dist/esm/nlp/totext.d.ts
+@@ -1,7 +1,7 @@
+-import { Language } from './i18n';
+-import { RRule } from '../rrule';
+-import { ByWeekday } from '../types';
+-import { Weekday } from '../weekday';
++import { Language } from './i18n.js';
++import { RRule } from '../rrule.js';
++import { ByWeekday } from '../types.js';
++import { Weekday } from '../weekday.js';
+ export declare type GetText = (id: string | number | Weekday) => string;
+ export declare type DateFormatter = (year: number, month: string, day: number) => string;
+ /**
+diff --git a/dist/esm/nlp/totext.js b/dist/esm/nlp/totext.js
+index f2d4c46b8c27b74cc97151c773c433944fb028ed..6cf8990ead24dfc0c10e005e48eceac7f4bcb16a 100644
+--- a/dist/esm/nlp/totext.js
++++ b/dist/esm/nlp/totext.js
+@@ -1,6 +1,6 @@
+-import ENGLISH from './i18n';
+-import { RRule } from '../rrule';
+-import { isArray, isNumber, isPresent } from '../helpers';
++import ENGLISH from './i18n.js';
++import { RRule } from '../rrule.js';
++import { isArray, isNumber, isPresent } from '../helpers.js';
+ // =============================================================================
+ // Helper functions
+ // =============================================================================
+diff --git a/dist/esm/optionstostring.d.ts b/dist/esm/optionstostring.d.ts
+index 9a3f66a69ef66aaf4ef592f062ffb731b26ef374..5badecedbc871e06f8fe54fad2175fe6a7d21563 100644
+--- a/dist/esm/optionstostring.d.ts
++++ b/dist/esm/optionstostring.d.ts
+@@ -1,3 +1,3 @@
+-import { Options } from './types';
++import { Options } from './types.js';
+ export declare function optionsToString(options: Partial<Options>): string;
+ //# sourceMappingURL=optionstostring.d.ts.map
+diff --git a/dist/esm/optionstostring.js b/dist/esm/optionstostring.js
+index 510c521942b462a1e16951a70a7cca03f00db526..15223cfe628949dd4729f24a1b7241e5f61ac36c 100644
+--- a/dist/esm/optionstostring.js
++++ b/dist/esm/optionstostring.js
+@@ -1,8 +1,8 @@
+-import { RRule, DEFAULT_OPTIONS } from './rrule';
+-import { includes, isPresent, isArray, isNumber, toArray } from './helpers';
+-import { Weekday } from './weekday';
+-import { timeToUntilString } from './dateutil';
+-import { DateWithZone } from './datewithzone';
++import { RRule, DEFAULT_OPTIONS } from './rrule.js';
++import { includes, isPresent, isArray, isNumber, toArray } from './helpers.js';
++import { Weekday } from './weekday.js';
++import { timeToUntilString } from './dateutil.js';
++import { DateWithZone } from './datewithzone.js';
+ export function optionsToString(options) {
+     var rrule = [];
+     var dtstart = '';
+diff --git a/dist/esm/parseoptions.d.ts b/dist/esm/parseoptions.d.ts
+index 1adeb39ae0bccf8e36457e9a22bb6fcbabfb4831..436b78c8a225633dce87cc5c382b50612dc5061c 100644
+--- a/dist/esm/parseoptions.d.ts
++++ b/dist/esm/parseoptions.d.ts
+@@ -1,6 +1,6 @@
+-import { Options, ParsedOptions } from './types';
+-import { Weekday } from './weekday';
+-import { Time } from './datetime';
++import { Options, ParsedOptions } from './types.js';
++import { Weekday } from './weekday.js';
++import { Time } from './datetime.js';
+ export declare function initializeOptions(options: Partial<Options>): {
+     freq?: import("./types").Frequency;
+     dtstart?: Date;
+diff --git a/dist/esm/parseoptions.js b/dist/esm/parseoptions.js
+index f12aeabbf49368c7a19a0740e67e37e3fa9bdec9..8e736e81701faa001f32953c74f11a24f23449b8 100644
+--- a/dist/esm/parseoptions.js
++++ b/dist/esm/parseoptions.js
+@@ -1,10 +1,10 @@
+ import { __assign } from "tslib";
+-import { freqIsDailyOrGreater } from './types';
+-import { includes, notEmpty, isPresent, isNumber, isArray, isWeekdayStr, } from './helpers';
+-import { RRule, defaultKeys, DEFAULT_OPTIONS } from './rrule';
+-import { getWeekday, isDate, isValidDate } from './dateutil';
+-import { Weekday } from './weekday';
+-import { Time } from './datetime';
++import { freqIsDailyOrGreater } from './types.js';
++import { includes, notEmpty, isPresent, isNumber, isArray, isWeekdayStr, } from './helpers.js';
++import { RRule, defaultKeys, DEFAULT_OPTIONS } from './rrule.js';
++import { getWeekday, isDate, isValidDate } from './dateutil.js';
++import { Weekday } from './weekday.js';
++import { Time } from './datetime.js';
+ export function initializeOptions(options) {
+     var invalid = [];
+     var keys = Object.keys(options);
+diff --git a/dist/esm/parsestring.d.ts b/dist/esm/parsestring.d.ts
+index 9fcd4cc22f3954b68ffdb3c5f72009e8a9b252fa..35c4fd8447d3f3da979183dd82df3c281074ac64 100644
+--- a/dist/esm/parsestring.d.ts
++++ b/dist/esm/parsestring.d.ts
+@@ -1,4 +1,4 @@
+-import { Options } from './types';
++import { Options } from './types.js';
+ export declare function parseString(rfcString: string): Partial<Options>;
+ export declare function parseDtstart(line: string): Partial<Options>;
+ //# sourceMappingURL=parsestring.d.ts.map
+diff --git a/dist/esm/parsestring.js b/dist/esm/parsestring.js
+index c09fc02b3c501ddf62298ec8db0e9463e7218fef..56962373927dd551c163afd680bdaf8f1b0f5ee9 100644
+--- a/dist/esm/parsestring.js
++++ b/dist/esm/parsestring.js
+@@ -1,8 +1,8 @@
+ import { __assign } from "tslib";
+-import { Frequency } from './types';
+-import { Weekday } from './weekday';
+-import { untilStringToDate } from './dateutil';
+-import { Days } from './rrule';
++import { Frequency } from './types.js';
++import { Weekday } from './weekday.js';
++import { untilStringToDate } from './dateutil.js';
++import { Days } from './rrule.js';
+ export function parseString(rfcString) {
+     var options = rfcString
+         .split('\n')
+diff --git a/dist/esm/rrule.d.ts b/dist/esm/rrule.d.ts
+index 74c9fedaa6abe4cf4e7e54fa1383109d473db1dd..cd810fdddd974ce170a4ad15896d5854b20711e4 100644
+--- a/dist/esm/rrule.d.ts
++++ b/dist/esm/rrule.d.ts
+@@ -1,11 +1,11 @@
+-import IterResult, { IterArgs } from './iterresult';
+-import { Language } from './nlp/i18n';
+-import { DateFormatter, GetText } from './nlp/totext';
+-import { ParsedOptions, Options, Frequency, QueryMethods, QueryMethodTypes, IterResultType } from './types';
+-import { parseString } from './parsestring';
+-import { optionsToString } from './optionstostring';
+-import { Cache, CacheKeys } from './cache';
+-import { Weekday } from './weekday';
++import IterResult, { IterArgs } from './iterresult.js';
++import { Language } from './nlp/i18n.js';
++import { DateFormatter, GetText } from './nlp/totext.js';
++import { ParsedOptions, Options, Frequency, QueryMethods, QueryMethodTypes, IterResultType } from './types.js';
++import { parseString } from './parsestring.js';
++import { optionsToString } from './optionstostring.js';
++import { Cache, CacheKeys } from './cache.js';
++import { Weekday } from './weekday.js';
+ export declare const Days: {
+     MO: Weekday;
+     TU: Weekday;
+diff --git a/dist/esm/rrule.js b/dist/esm/rrule.js
+index 1e601fff55471620426492b8a6411195afd278a0..c51092b14ce238c1d53610eb150dc6487fcae810 100644
+--- a/dist/esm/rrule.js
++++ b/dist/esm/rrule.js
+@@ -1,14 +1,14 @@
+-import { isValidDate } from './dateutil';
+-import IterResult from './iterresult';
+-import CallbackIterResult from './callbackiterresult';
+-import { fromText, parseText, toText, isFullyConvertible } from './nlp/index';
+-import { Frequency, } from './types';
+-import { parseOptions, initializeOptions } from './parseoptions';
+-import { parseString } from './parsestring';
+-import { optionsToString } from './optionstostring';
+-import { Cache } from './cache';
+-import { Weekday } from './weekday';
+-import { iter } from './iter/index';
++import { isValidDate } from './dateutil.js';
++import IterResult from './iterresult.js';
++import CallbackIterResult from './callbackiterresult.js';
++import { fromText, parseText, toText, isFullyConvertible } from './nlp/index.js';
++import { Frequency, } from './types.js';
++import { parseOptions, initializeOptions } from './parseoptions.js';
++import { parseString } from './parsestring.js';
++import { optionsToString } from './optionstostring.js';
++import { Cache } from './cache.js';
++import { Weekday } from './weekday.js';
++import { iter } from './iter/index.js';
+ // =============================================================================
+ // RRule
+ // =============================================================================
+diff --git a/dist/esm/rruleset.d.ts b/dist/esm/rruleset.d.ts
+index 633fdf2387f338fd5f64fbdca1d6eca986de2f42..0dd056a690f369f94f165eb8c2d770963dcacd86 100644
+--- a/dist/esm/rruleset.d.ts
++++ b/dist/esm/rruleset.d.ts
+@@ -1,6 +1,6 @@
+-import { RRule } from './rrule';
+-import IterResult from './iterresult';
+-import { QueryMethodTypes, IterResultType } from './types';
++import { RRule } from './rrule.js';
++import IterResult from './iterresult.js';
++import { QueryMethodTypes, IterResultType } from './types.js';
+ export declare class RRuleSet extends RRule {
+     readonly _rrule: RRule[];
+     readonly _rdate: Date[];
+diff --git a/dist/esm/rruleset.js b/dist/esm/rruleset.js
+index 81a7b6ae8a1b06d87e8dadb0e03a2cb60312c582..15dd4964984044062167ecf6282384b1cdcbe5b1 100644
+--- a/dist/esm/rruleset.js
++++ b/dist/esm/rruleset.js
+@@ -1,10 +1,10 @@
+ import { __extends } from "tslib";
+-import { RRule } from './rrule';
+-import { sort, timeToUntilString } from './dateutil';
+-import { includes } from './helpers';
+-import { iterSet } from './iterset';
+-import { rrulestr } from './rrulestr';
+-import { optionsToString } from './optionstostring';
++import { RRule } from './rrule.js';
++import { sort, timeToUntilString } from './dateutil.js';
++import { includes } from './helpers.js';
++import { iterSet } from './iterset.js';
++import { rrulestr } from './rrulestr.js';
++import { optionsToString } from './optionstostring.js';
+ function createGetterSetter(fieldName) {
+     var _this = this;
+     return function (field) {
+diff --git a/dist/esm/rrulestr.d.ts b/dist/esm/rrulestr.d.ts
+index fdef89594cb12bb647926c1fc4095ffba7e6cffc..278a23849d2324cd169e6cdd700756c5efc1d4d4 100644
+--- a/dist/esm/rrulestr.d.ts
++++ b/dist/esm/rrulestr.d.ts
+@@ -1,6 +1,6 @@
+-import { RRule } from './rrule';
+-import { RRuleSet } from './rruleset';
+-import { Options } from './types';
++import { RRule } from './rrule.js';
++import { RRuleSet } from './rruleset.js';
++import { Options } from './types.js';
+ export interface RRuleStrOptions {
+     dtstart: Date | null;
+     cache: boolean;
+diff --git a/dist/esm/rrulestr.js b/dist/esm/rrulestr.js
+index de4b5fc249f0eb2bf356f606725cfb9c71ce0a60..e4a614dbc3b6d155e4f6d109567053341eb8f58b 100644
+--- a/dist/esm/rrulestr.js
++++ b/dist/esm/rrulestr.js
+@@ -1,9 +1,9 @@
+ import { __assign } from "tslib";
+-import { RRule } from './rrule';
+-import { RRuleSet } from './rruleset';
+-import { untilStringToDate } from './dateutil';
+-import { includes, split } from './helpers';
+-import { parseString, parseDtstart } from './parsestring';
++import { RRule } from './rrule.js';
++import { RRuleSet } from './rruleset.js';
++import { untilStringToDate } from './dateutil.js';
++import { includes, split } from './helpers.js';
++import { parseString, parseDtstart } from './parsestring.js';
+ /**
+  * RRuleStr
+  * To parse a set of rrule strings
+diff --git a/dist/esm/types.d.ts b/dist/esm/types.d.ts
+index d71ff9196be88b8572ba7ab82e87976da02d41d9..6a20c0f031f5e43f9ce0ad58f22bc327f2daec2b 100644
+--- a/dist/esm/types.d.ts
++++ b/dist/esm/types.d.ts
+@@ -1,4 +1,4 @@
+-import { Weekday, WeekdayStr } from './weekday';
++import { Weekday, WeekdayStr } from './weekday.js';
+ export interface QueryMethods {
+     all(): Date[];
+     between(after: Date, before: Date, inc: boolean): Date[];
+diff --git a/package.json b/package.json
+index 4035e6fcefc690b033f8eb20c557f11980bb8422..7f4f76d432c48583082a2cc5c081c3a002939fc4 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,6 @@
+ {
+   "name": "rrule",
++  "type": "module",
+   "version": "2.8.1",
+   "description": "JavaScript library for working with recurrence rules for calendar dates.",
+   "homepage": "http://jakubroztocil.github.io/rrule/",
+@@ -15,6 +16,11 @@
+   "main": "dist/es5/rrule.js",
+   "module": "dist/esm/index.js",
+   "types": "dist/esm/index.d.ts",
++  "exports": {
++    ".": {
++      "import": "./dist/esm/index.js"
++    }
++  },
+   "repository": {
+     "type": "git",
+     "url": "git://github.com/jakubroztocil/rrule.git"
