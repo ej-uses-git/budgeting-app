@@ -15,8 +15,34 @@ export const Cost = Schema.Struct({
 });
 export type Cost = typeof Cost.Type;
 
+export type Currency = Cost["currency"];
+
 export const Payment = Schema.Struct({
   amount: Cost,
   date: Schema.DateTimeUtc,
 });
 export type Payment = typeof Payment.Type;
+
+export const sum = (amounts: readonly Cost[]) =>
+  amounts.reduce<Cost>(
+    (acc, cur) => {
+      if (acc.ratio < cur.ratio) {
+        const diff = cur.ratio / acc.ratio;
+        return {
+          amount: acc.amount * diff + cur.amount,
+          // TODO: handle different currencies?
+          currency: NIS,
+          ratio: cur.ratio,
+        };
+      }
+
+      const diff = acc.ratio / cur.ratio;
+      return {
+        amount: acc.amount + cur.amount * diff,
+        // TODO: handle different currencies?
+        currency: NIS,
+        ratio: acc.ratio,
+      };
+    },
+    { amount: 0, currency: NIS, ratio: 1 },
+  );

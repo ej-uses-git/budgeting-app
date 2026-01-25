@@ -16,6 +16,7 @@
     "import/no-named-as-default-member": "off",
     "import/no-named-export": "off",
     "import/no-namespace": "off",
+    "import/no-unassigned-import": "off",
     "import/prefer-default-export": "off",
     "init-declarations": "off",
     "max-classes-per-file": "off",
@@ -27,7 +28,7 @@
     "sort-imports": "off",
     "unicorn/filename-case": [
       "error",
-      { "case": "pascalCase", "ignore": "^[^.]+\\.config\\..*$" }
+      { "case": "pascalCase", "ignore": "^[^.]+\\.config\\..*$|^main\\.tsx$" }
     ],
     "unicorn/no-array-callback-reference": "off",
     "unicorn/no-array-method-this-argument": "off",
