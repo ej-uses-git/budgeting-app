@@ -5,4 +5,5 @@ import { TransactionsGroup } from "./TransactionsGroup.js";
 
 export const Api = HttpApi.make("Budgeting")
   .add(PlansGroup)
-  .add(TransactionsGroup);
+  .add(TransactionsGroup)
+  .prefix("/api");
