@@ -1,0 +1,36 @@
+{
+  "name": "@repo/api",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./Api": {
+      "types": "./src/Api.ts",
+      "default": "./dist/Api.js"
+    },
+    "./ApiError": {
+      "types": "./src/ApiError.ts",
+      "default": "./dist/ApiError.js"
+    }
+  },
+  "scripts": {
+    "lint": "oxlint",
+    "lint:ci": "oxlint -f github",
+    "format": "oxfmt",
+    "check-format": "oxfmt --check",
+    "check-types": "tsc",
+    "build": "tsdown",
+    "dev": "tsdown --watch"
+  },
+  "dependencies": {
+    "@effect/platform": "catalog:",
+    "@repo/domain": "workspace:*",
+    "effect": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/oxlint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "oxlint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:"
+  }
+}

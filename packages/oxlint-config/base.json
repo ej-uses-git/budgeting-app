@@ -8,7 +8,30 @@
     "suspicious": "warn"
   },
   "rules": {
-    "func-names": "off"
+    "curly": "off",
+    "func-names": "off",
+    "import/exports-last": "off",
+    "import/group-exports": "off",
+    "import/max-dependencies": "off",
+    "import/no-named-as-default-member": "off",
+    "import/no-named-export": "off",
+    "import/no-namespace": "off",
+    "import/prefer-default-export": "off",
+    "init-declarations": "off",
+    "max-classes-per-file": "off",
+    "max-lines-per-function": "off",
+    "max-params": ["warn", { "max": 4 }],
+    "new-cap": "off",
+    "no-magic-numbers": ["error", { "ignore": [0, 1], "ignoreEnums": true }],
+    "no-ternary": "off",
+    "sort-imports": "off",
+    "unicorn/filename-case": [
+      "error",
+      { "case": "pascalCase", "ignore": "^[^.]+\\.config\\..*$" }
+    ],
+    "unicorn/no-array-callback-reference": "off",
+    "unicorn/no-array-method-this-argument": "off",
+    "unicorn/no-null": "off"
   },
   "settings": {
     "jsdoc": {

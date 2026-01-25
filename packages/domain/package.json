@@ -1,0 +1,40 @@
+{
+  "name": "@repo/domain",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./Recurrence": {
+      "types": "./src/Recurrence.ts",
+      "default": "./dist/Recurrence.js"
+    },
+    "./Budget": {
+      "types": "./src/Budget.ts",
+      "default": "./dist/Budget.js"
+    },
+    "./Currency": {
+      "types": "./src/Currency.ts",
+      "default": "./dist/Currency.js"
+    }
+  },
+  "scripts": {
+    "lint": "oxlint",
+    "lint:ci": "oxlint -f github",
+    "format": "oxfmt",
+    "check-format": "oxfmt --check",
+    "check-types": "tsc",
+    "build": "tsdown",
+    "dev": "tsdown --watch"
+  },
+  "dependencies": {
+    "@effect/platform": "catalog:",
+    "effect": "catalog:",
+    "rrule": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/oxlint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "oxlint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:"
+  }
+}
